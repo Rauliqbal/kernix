@@ -1,15 +1,14 @@
 #include "cpu.h"
 #include <fstream>
-#include <string>
 
-using namespace std;
+std::string CpuModule::getName() const { return "CPU"; }
 
-string getCPU() {
-  ifstream file("/proc/cpuinfo");
-  string line;
+std::string CpuModule::fetch() const {
+  std::ifstream file("/proc/cpuinfo");
+  std::string line;
 
-  while (getline(file, line)) {
-    if (line.find("model name") != string::npos) {
+  while (std::getline(file, line)) {
+    if (line.find("model name") != std::string::npos) {
       return line.substr(line.find(":") + 2);
     }
   }

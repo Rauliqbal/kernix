@@ -1,8 +1,12 @@
 #ifndef CPU_H
 #define CPU_H
 
-#include <string>
+#include "../module.h"
 
-std::string getCPU();
+class CpuModule : public Module {
+public:
+  std::string getName() const override;
+  std::string fetch() const override;
+};
 
 #endif
